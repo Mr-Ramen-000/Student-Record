@@ -1,6 +1,5 @@
 package Assignment;
 
-import static Assignment.StudentInformationPanel.listOfStudentsInfo;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
@@ -126,7 +125,7 @@ public class MainFrame extends Frame {
                             int isConfirm = JOptionPane.showConfirmDialog(MainFrame.this, msg, "Confirmation", JOptionPane.YES_NO_OPTION);
 
                             if (isConfirm == 0) {
-                                listOfStudentsInfo.clear();
+                                StudentInformationPanel.listOfStudentsInfo.clear();
                                 ListOfStudentPanel.listOfStudentsName.removeAll();
                             }
                         }
@@ -223,9 +222,6 @@ public class MainFrame extends Frame {
             }
             String saveLocation = directory + file;
             writeCSVFile(saveLocation);
-            System.out.println("Save Location: " + saveLocation);
-        } else {
-            System.out.println("Save canceled.");
         }
     }
 
@@ -233,6 +229,8 @@ public class MainFrame extends Frame {
         try {
             Scanner scanner = new Scanner(new File(filePath));
             scanner.nextLine();
+            StudentInformationPanel.listOfStudentsInfo.clear();
+            ListOfStudentPanel.listOfStudentsName.removeAll();
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
 
@@ -248,12 +246,11 @@ public class MainFrame extends Frame {
                 String note = fields[7].strip().replaceAll("~", "\n");
 
                 Student newStudent = new Student(id, firstName, lastName, age, gender, address, note, course);
-                listOfStudentsInfo.add(newStudent);
+                StudentInformationPanel.listOfStudentsInfo.add(newStudent);
                 ListOfStudentPanel.listOfStudentsName.add("Id: " + id + " Name: " + firstName + " " + lastName);
             }
             scanner.close();
         } catch (Exception e) {
-            System.out.println(e);
             JOptionPane.showMessageDialog(this, "Unsupported file format.", "Load File", JOptionPane.INFORMATION_MESSAGE);
         }
     }

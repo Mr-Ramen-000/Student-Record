@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 public class StudentInformationPanel extends Panel {
 
-    static ArrayList<Student> listOfStudentsInfo = new ArrayList<>();
+    public static ArrayList<Student> listOfStudentsInfo = new ArrayList<>();
 
     TextField firstNameField, lastNameField, ageField, addressField;
     TextArea noteField;
@@ -162,7 +162,6 @@ public class StudentInformationPanel extends Panel {
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println(listOfStudentsInfo);
                 String selectedStudent = ListOfStudentPanel.listOfStudentsName.getSelectedItem();
                 String msg = "Do you want to delete " + selectedStudent;
 

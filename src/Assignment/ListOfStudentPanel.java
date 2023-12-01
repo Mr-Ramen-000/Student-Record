@@ -3,7 +3,7 @@ package Assignment;
 import java.awt.*;
 
 public class ListOfStudentPanel extends Panel{
-    static List listOfStudentsName = new List();
+    public static List listOfStudentsName = new List();
    
     public ListOfStudentPanel() {
         Color fontColor = new Color(41, 50, 80);
