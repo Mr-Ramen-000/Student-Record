@@ -179,7 +179,6 @@ public class StudentInformationPanel extends Panel {
                         }
                         resetFields();
                     }
-                    System.out.println(listOfStudentsInfo);
                     return;
                 }
                 JOptionPane.showMessageDialog(mainFrame, "Select the student you want to delete.", "Delete Error", JOptionPane.INFORMATION_MESSAGE);
@@ -192,7 +191,7 @@ public class StudentInformationPanel extends Panel {
                 String selectedItem = ListOfStudentPanel.listOfStudentsName.getSelectedItem();
 
                 for (Student student : listOfStudentsInfo) {
-                    if (selectedItem.equals("Id: " + student.getId() + " Name: " + student.getFirstName() + " " + student.getLastName())) {
+                    if (selectedItem != null && selectedItem.equals("Id: " + student.getId() + " Name: " + student.getFirstName() + " " + student.getLastName())) {
                         selectedItem = null;
                         selectedId = student.getId();
                         firstNameField.setText(student.getFirstName());
